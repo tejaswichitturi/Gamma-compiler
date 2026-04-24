@@ -1,0 +1,194 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* HERO SECTION */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+  background: linear-gradient(135deg, #4f6df5, #6a5acd);
+  color: white;
+}
+
+/* LEFT SIDE */
+.hero-left {
+  max-width: 500px;
+}
+
+.hero-left h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero-left span {
+  color: #ffd700;
+}
+
+.hero-left p {
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+}
+
+/* BUTTON */
+.cta-btn {
+  padding: 12px 25px;
+  background: white;
+  color: #333;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+}
+
+
+/* Buttons */
+.auth-buttons a {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  background: #4f6df5;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+/* PROFILE */
+.profile img {
+  width: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* FLOAT ANIMATION */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* LANGUAGES SECTION */
+.languages {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 60px;
+  flex-wrap: wrap;
+  background: #f4f4f4;
+}
+
+/* CARDS */
+.card {
+  width: 130px;
+  height: 110px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card i {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+/* COLORS */
+.c { background: #555; }
+.cpp { background: #00599C; }
+.java { background: #f89820; }
+.python { background: #3776AB; }
+.js { background: #f7df1e; color: black; }
+
+/* HOVER */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* TOP RIGHT AUTH BOX */
+.top-auth {
+  position: fixed;   /* stays in top-right */
+  top: 20px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+/* Buttons */
+.top-auth a {
+  padding: 6px 14px;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* Login style */
+.login {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+/* Signup style */
+.signup {
+  background: white;
+  color: #4f6df5;
+}
+
+
+/* ABOUT SECTION */
+.about {
+  padding: 70px 20px;
+  text-align: center;
+  background: white;
+}
+
+.about h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.about-text {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* FEATURES */
+.features {
+  color: #9be6cf;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+/* FEATURE BOX */
+.feature-box {
+    color: lightskyblue;
+  width: 250px;
+  padding: 20px;
+  border-radius: 12px;
+  background:rgb(23, 107, 177);
+  transition: 0.3s;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+}
