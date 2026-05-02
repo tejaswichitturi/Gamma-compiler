@@ -1,0 +1,143 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* BODY */
+body {
+  background: #f5f7fb;
+}
+
+/* HEADER */
+.header {
+  height: 60px;
+  background: linear-gradient(135deg, #93e5eb, #2727a8);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* CONTROLS */
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.controls select,
+.controls button {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+}
+
+.controls button {
+  background: white;
+  color: #5d61e3;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.controls button:hover {
+  background: #dcdcdc;
+}
+
+/* LAYOUT */
+.layout {
+  display: flex;
+  height: calc(100vh - 60px);
+}
+
+/* LEFT */
+.left {
+  width: 70%;
+  padding: 20px;
+}
+
+/* RIGHT */
+.right {
+  width: 30%;
+  background: #eef1f8;
+  border-left: 2px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+
+/* EDITOR CARD */
+.editor-card {
+  background: white;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(92, 106, 128, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  padding: 12px;
+  background: #f0f3ff;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+/* CodeMirror */
+.CodeMirror {
+  flex: 1;
+  height: 100%;
+  font-size: 14px;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  background: #ddd;
+}
+
+.tab.active {
+  background: #35a0ce;
+  color: white;
+}
+
+/* PANELS */
+.panel {
+  display: none;
+  flex: 1;
+}
+
+.panel.active {
+  display: block;
+}
+
+/* OUTPUT */
+#output {
+  height: 100%;
+  padding: 10px;
+  background: #5a7874;
+  color: #00ff88;
+  overflow-y: auto;
+}
+
+/* ERROR */
+#error {
+  height: 100%;
+  padding: 10px;
+  background: #8d5050;
+  color: #ff4d4d;
+  overflow-y: auto;
+}

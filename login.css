@@ -1,0 +1,96 @@
+/* Wrapper (same gradient feel as hero) */
+.login-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #4f6df5, #6a5acd);
+}
+
+/* Login Box */
+.login-box {
+  background: white;
+  padding: 35px;
+  width: 360px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+/* Heading */
+.login-box h2 {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.login-box p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Input group */
+.input-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-size: 13px;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #4f6df5;
+}
+
+/* Login button */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: #4f6df5;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #3c56d8;
+  transform: scale(1.03);
+}
+
+/* Error */
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* Extra links */
+.extra {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.extra a {
+  color: #4f6df5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.extra a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Editor | Gamma Compiler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="code.css">
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">Gamma</div>
+
+  <div class="controls">
+    <select id="language">
+      <option value="python">Python</option>
+      <option value="cpp">C++</option>
+      <option value="c">C</option>
+      <option value="java">Java</option>
+      <option value="javascript">JavaScript</option>
+    </select>
+
+    <button id="runBtn">Run</button>
+    <button id="saveBtn">Save</button>
+  </div>
+</header>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+  <!-- LEFT: EDITOR -->
+  <div class="left">
+    <div class="editor-card">
+      <div class="card-header">Your Code</div>
+      <textarea id="codeEditor"></textarea>
+    </div>
+  </div>
+
+  <!-- RIGHT: OUTPUT + ERROR -->
+  <div class="right">
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('output')">Output</button>
+      <button class="tab" onclick="switchTab('error')">Errors</button>
+    </div>
+
+    <div class="panel active" id="outputPanel">
+      <pre id="output">Run your code to see output...</pre>
+    </div>
+
+    <div class="panel" id="errorPanel">
+      <pre id="error">No errors</pre>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- CodeMirror -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+
+<script>
+/* INIT EDITOR */
+const editor = CodeMirror.fromTextArea(document.getElementById("codeEditor"), {
+  lineNumbers: true,
+  mode: "python",
+  theme: "default"
+});
+
+/* DEFAULT TEMPLATES */
+const templates = {
+  python: `print("Hello, World!")`,
+
+  cpp: `#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello, World!" << endl;
+    return 0;
+}`,
+
+  c: `#include <stdio.h>
+
+int main() {
+    printf("Hello, World!");
+    return 0;
+}`,
+
+  java: `public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}`,
+
+  javascript: `console.log("Hello, World!");`
+};
+
+/* MODES */
+const modes = {
+  python: "python",
+  cpp: "text/x-c++src",
+  c: "text/x-csrc",
+  java: "text/x-java",
+  javascript: "javascript"
+};
+
+/* LOAD DEFAULT */
+window.onload = () => {
+  const lang = document.getElementById("language").value;
+  editor.setValue(templates[lang]);
+};
+
+/* CHANGE LANGUAGE */
+document.getElementById("language").addEventListener("change", function () {
+  const lang = this.value;
+  editor.setValue(templates[lang]);
+  editor.setOption("mode", modes[lang]);
+});
+
+/* RUN CODE */
+document.getElementById("runBtn").onclick = async () => {
+  const code = editor.getValue();
+  const language = document.getElementById("language").value;
+
+  const outputBox = document.getElementById("output");
+  const errorBox = document.getElementById("error");
+
+  outputBox.textContent = "Running...";
+  errorBox.textContent = "";
+
+  try {
+    const res = await fetch("http://localhost:5000/run", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ code, language })
+    });
+
+    const data = await res.json();
+
+    if (data.output) {
+      outputBox.textContent = data.output;
+      errorBox.textContent = "No errors";
+    } else {
+      outputBox.textContent = "";
+      errorBox.textContent = data.error;
+      switchTab("error");
+    }
+
+  } catch {
+    errorBox.textContent = "Server error";
+    switchTab("error");
+  }
+};
+
+/* TAB SWITCH */
+function switchTab(tab) {
+  document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+
+  if (tab === "output") {
+    document.getElementById("outputPanel").classList.add("active");
+    document.querySelectorAll(".tab")[0].classList.add("active");
+  } else {
+    document.getElementById("errorPanel").classList.add("active");
+    document.querySelectorAll(".tab")[1].classList.add("active");
+  }
+}
+</script>
+
+</body>
+</html>
